@@ -32,7 +32,7 @@ const SideNav = () => {
         },
       }}
     >
-      <Box sx={{ p: 2, textAlign: 'right' }}>
+      <Box sx={{ p: 2, textAlign: 'right', mb: 1 }}>
         <Typography variant="h6" fontWeight="bold">
           מעלה הדרך
         </Typography>
