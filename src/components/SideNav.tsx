@@ -1,6 +1,6 @@
 import { Box, Drawer, List, ListItem, ListItemIcon, ListItemText, Avatar, Typography, IconButton, Divider } from '@mui/material';
 import { InsertChart, EventNote, Groups, School, Description, Dashboard, Settings } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const navItems = [
   { label: 'דשבורד', icon: <InsertChart />, path: '/dashboard' },
@@ -11,10 +11,11 @@ const navItems = [
   { label: 'דוחות', icon: <Dashboard />, path: '/reports' },
 ];
 
-const activeLabel = 'דשבורד';
+
 
 const SideNav = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <Drawer
@@ -40,7 +41,7 @@ const SideNav = () => {
 
       <List>
         {navItems.map((item, index) => {
-          const isActive = item.label === activeLabel;
+          const isActive = location.pathname === item.path;
           return (
             <ListItem key={index} component="li" disablePadding>
               <Box
