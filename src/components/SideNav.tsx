@@ -32,7 +32,7 @@ const SideNav = () => {
         },
       }}
     >
-      <Box sx={{ p: 2, textAlign: 'right', mb: 1 }}>
+      <Box sx={{ p: 2, textAlign: 'right', mb: 2 }}>
         <Typography variant="h6" fontWeight="bold">
           מעלה הדרך
         </Typography>
@@ -50,7 +50,7 @@ const SideNav = () => {
                   alignItems: 'center',
                   width: 'calc(100% - 20px)',
                   marginX: '10px',
-                  mb: 1.5,
+                  mb: 0.75,
                   px: 2,
                   py: 1,
                   cursor: 'pointer',
