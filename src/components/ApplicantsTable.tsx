@@ -105,8 +105,8 @@ const ApplicantsTable = () => {
                     <MenuItem value="דובדבן">דובדבן</MenuItem>
                 </TextField>
             </Box>
-            <TableContainer component={Paper}>
-                <Table>
+            <TableContainer component={Paper} sx={{ maxHeight: 'calc(100vh - 200px)' }}>
+                <Table stickyHeader>
                     <TableHead sx={{ backgroundColor: '#f5f5f5' }}>
                         <TableRow>
                             <TableCell align="center" sx={{ fontWeight: 'bold' }}>

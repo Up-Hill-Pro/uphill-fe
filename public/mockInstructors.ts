@@ -1,4 +1,4 @@
-export type Reviewer = {
+export type Instructor = {
     name: string;
     id: string;
     image: string;
@@ -11,7 +11,7 @@ export type Reviewer = {
     lastEvaluationDate: string;
 };
 
-export const mockApplicants: Reviewer[] = [
+export const mockInstructors: Instructor[] = [
         {
             "name": "טל מרציאנו",
             "id": "772596",

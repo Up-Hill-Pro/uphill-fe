@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import SideNav from './components/SideNav'
 import TopBar from './components/TopBar';
 import ApplicantsTable from './components/ApplicantsTable';
+import InstructorsTable from "./components/InstructorsTable.tsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <TopBar />
         <Routes>
           <Route path="/applicants" element={<ApplicantsTable />} />
+          <Route path="/instructors" element={<InstructorsTable />} />
         </Routes>
       </Box>
     </Box>
