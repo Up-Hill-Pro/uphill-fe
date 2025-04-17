@@ -204,7 +204,7 @@ const WeeksTable = () => {
                     </TableHead>
                     <TableBody>
                         {paginatedWeeks.map((week, index) => (
-                        <TableRow key={index} hover onClick={() => navigate(`/applicants?weekId=${week.weekId}`)} sx={{ minHeight: 32, height: 70, cursor: 'pointer', transition: 'background-color 0.2s', '&:hover': { backgroundColor: '#eef4ff' } }}>
+                        <TableRow key={index} hover onClick={() => navigate(`/applicants?weekId=${week.weekId}`)} sx={{ minHeight: 50, height: 75, cursor: 'pointer', transition: 'background-color 0.2s', '&:hover': { backgroundColor: '#eef4ff' } }}>
                                 <TableCell align="center">{week.weekNumber}</TableCell>
                                 <TableCell align="center">{week.unit}</TableCell>
                                 <TableCell align="center">{week.team}</TableCell>
