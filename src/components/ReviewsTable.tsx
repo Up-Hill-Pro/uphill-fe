@@ -14,10 +14,12 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import {mockReviews} from '../../public/mockReviews';
+import { useSearchParams } from 'react-router-dom';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { he } from 'date-fns/locale';
+import { useNavigate } from 'react-router-dom';
 
 interface Review {
     name: string;
@@ -45,14 +47,20 @@ const parseDate = (dateStr: string) => {
 
 const ReviewsTable = () => {
     const [reviews] = useState<Review[]>(mockReviews);
+    const [searchParams] = useSearchParams();
+    const idParam = searchParams.get('id');
+    const evaluatorIdParam = searchParams.get('evaluatorId');
     const [nameFilter, setNameFilter] = useState('');
+    const [idFilter, setIdFilter] = useState(idParam ?? '');
     const [evaluatorFilter, setEvaluatorFilter] = useState('');
+    const [evaluatorIdFilter, setEvaluatorIdFilter] = useState(evaluatorIdParam ?? '');
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
     const [sortBy, setSortBy] = useState('');
     const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(25);
+    const navigate = useNavigate();
     const filteredReviews = reviews.filter((review) => {
         const reviewDate = parseDate(review.date);
         const isWithinRange =
@@ -61,7 +69,9 @@ const ReviewsTable = () => {
 
         return (
             review.name.includes(nameFilter) &&
+            review.id.includes(idFilter) &&
             review.evaluatorName.includes(evaluatorFilter) &&
+            review.evaluatorId.includes(evaluatorIdFilter) &&
             isWithinRange
         );
     });
@@ -117,9 +127,23 @@ const ReviewsTable = () => {
                     size="small"
                 />
                 <TextField
+                    label="חיפוש לפי מספר אישי"
+                    value={idFilter}
+                    onChange={(e) => setIdFilter(e.target.value)}
+                    variant="outlined"
+                    size="small"
+                />
+                <TextField
                     label="חיפוש לפי שם מאתר"
                     value={evaluatorFilter}
                     onChange={(e) => setEvaluatorFilter(e.target.value)}
+                    variant="outlined"
+                    size="small"
+                />
+                <TextField
+                    label="חיפוש לפי מספר אישי מאתר"
+                    value={evaluatorIdFilter}
+                    onChange={(e) => setEvaluatorIdFilter(e.target.value)}
                     variant="outlined"
                     size="small"
                 />
@@ -204,7 +228,18 @@ const ReviewsTable = () => {
                     </TableHead>
                     <TableBody>
                         {paginatedReviews.map((review, index) => (
-                            <TableRow key={index} hover>
+                            <TableRow
+                                key={index}
+                                hover
+                                onClick={() => navigate(`/reviews?id=${review.id}`)}
+                                sx={{
+                                    cursor: 'pointer',
+                                    transition: 'background-color 0.2s',
+                                    '&:hover': {
+                                        backgroundColor: '#eef4ff',
+                                    },
+                                }}
+                            >
                                 <TableCell align="center">{review.name}</TableCell>
                                 <TableCell align="center">{review.id}</TableCell>
                                 <TableCell align="center">

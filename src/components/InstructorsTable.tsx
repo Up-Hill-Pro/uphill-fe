@@ -12,6 +12,7 @@ import {
     TableSortLabel,
     TablePagination
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { mockInstructors } from '../../public/mockInstructors.ts';
 
@@ -42,6 +43,7 @@ const InstructorsTable = () => {
     const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(25);
+    const navigate = useNavigate();
 
     const filteredInstructors: Instructor[] = mockInstructors.filter((instructor) => {
         return (
@@ -198,7 +200,12 @@ const InstructorsTable = () => {
                     </TableHead>
                     <TableBody>
                         {paginatedInstructors.map((instructor, index) => (
-                            <TableRow key={index} hover sx={{ '&:hover': { backgroundColor: '#eef4ff' } }}>
+                            <TableRow
+                                key={index}
+                                hover
+                                onClick={() => navigate(`/reviews?evaluatorId=${instructor.id}`)}
+                                sx={{ cursor: 'pointer', '&:hover': { backgroundColor: '#eef4ff' } }}
+                            >
                                 <TableCell align="center">{instructor.name}</TableCell>
                                 <TableCell align="center">{instructor.id}</TableCell>
                                 <TableCell align="center">

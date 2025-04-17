@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import { mockApplicants } from '../../public/mockApplicants';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 //import { useTheme } from '@mui/material/styles';
 
 const getStatusColor = (status: string) => {
@@ -30,6 +31,7 @@ const ApplicantsTable = () => {
     const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(25);
+    const navigate = useNavigate();
 
     const filteredApplicants = mockApplicants.filter((applicant) => {
         return (
@@ -138,17 +140,20 @@ const ApplicantsTable = () => {
                     <TableBody>
                         {paginatedApplicants.map((row, index) => (
                             <TableRow
-                              key={index}
-                              hover
-                              sx={{
-                                cursor: 'pointer',
-                                transition: 'background-color 0.2s',
-                                '&:hover': {
-                                  backgroundColor: '#eef4ff',
-                                },
-                              }}
+                                key={index}
+                                hover
+                                onClick={() => navigate(`/reviews?id=${row.id}`)}
+                                sx={{
+                                    cursor: 'pointer',
+                                    transition: 'background-color 0.2s',
+                                    '&:hover': {
+                                        backgroundColor: '#eef4ff',
+                                    },
+                                }}
                             >
-                                <TableCell align="center">{row.name}</TableCell>
+                                <TableCell align="center">
+                                    {row.name}
+                                </TableCell>
                                 <TableCell align="center">{row.id}</TableCell>
                                 <TableCell align="center">{row.unit}</TableCell>
                                 <TableCell align="center">
