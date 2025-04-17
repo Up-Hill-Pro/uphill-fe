@@ -43,7 +43,7 @@ export const mockWeeks: Week[] = [
         team: "רובינזון",
         applicantCount: 31,
         evaluatorCount: 10,
-        status: "עתידי להתקיים",
+        status: "עתיד להתקיים",
         passed: 0,
         cycle: "מרץ 2023",
         startDate: "21-11-2024 00:00"
@@ -55,7 +55,7 @@ export const mockWeeks: Week[] = [
         team: "מתתיהו",
         applicantCount: 17,
         evaluatorCount: 5,
-        status: "עתידי להתקיים",
+        status: "עתיד להתקיים",
         passed: 0,
         cycle: "נוב 2023",
         startDate: "15-12-2024 00:00"
@@ -127,7 +127,7 @@ export const mockWeeks: Week[] = [
         team: "שאשא",
         applicantCount: 23,
         evaluatorCount: 7,
-        status: "עתידי להתקיים",
+        status: "עתיד להתקיים",
         passed: 0,
         cycle: "נוב 2023",
         startDate: "08-06-2024 00:00"

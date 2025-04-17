@@ -18,7 +18,6 @@ import { mockApplicants } from '../../public/mockApplicants';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
-//import { useTheme } from '@mui/material/styles';
 
 const getStatusColor = (status: string) => {
     if (status === 'עבר') return 'success';
@@ -31,12 +30,14 @@ const ApplicantsTable = () => {
     const [nameFilter, setNameFilter] = useState('');
     const [idFilter, setIdFilter] = useState('');
     const [unitFilter, setUnitFilter] = useState('');
-    const [sortBy, setSortBy] = useState('');
-    const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+    const [searchParams, setSearchParams] = useSearchParams();
+    const initialSortBy = searchParams.get('sortBy') || '';
+    const initialSortDirection = (searchParams.get('sortDirection') as 'asc' | 'desc') || 'asc';
+    const [sortBy, setSortBy] = useState(initialSortBy);
+    const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>(initialSortDirection);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(25);
     const navigate = useNavigate();
-    const [searchParams] = useSearchParams();
     const weekIdParam = searchParams.get('weekId');
     const weekId = weekIdParam ? parseInt(weekIdParam) : null;
 
@@ -54,6 +55,9 @@ const ApplicantsTable = () => {
         const isAsc = sortBy === field && sortDirection === 'asc';
         setSortBy(field);
         setSortDirection(isAsc ? 'desc' : 'asc');
+        searchParams.set('sortBy', field);
+        searchParams.set('sortDirection', isAsc ? 'desc' : 'asc');
+        setSearchParams(searchParams);
     };
 
     const sortedApplicants = [...filteredApplicants].sort((a, b) => {
@@ -154,7 +158,7 @@ const ApplicantsTable = () => {
                             <TableRow
                                 key={index}
                                 hover
-                                onClick={() => navigate(`/reviews?id=${row.id}`)}
+                            onClick={() => navigate(`/reviews?id=${row.id}&weekId=${weekId}`)}
                                 sx={{
                                     cursor: 'pointer',
                                     transition: 'background-color 0.2s',

@@ -47,17 +47,19 @@ const parseDate = (dateStr: string) => {
 
 const ReviewsTable = () => {
     const [reviews] = useState<Review[]>(mockReviews);
-    const [searchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
     const idParam = searchParams.get('id');
     const evaluatorIdParam = searchParams.get('evaluatorId');
+    const initialSortBy = searchParams.get('sortBy') || '';
+    const initialSortDirection = (searchParams.get('sortDirection') as 'asc' | 'desc') || 'asc';
     const [nameFilter, setNameFilter] = useState('');
     const [idFilter, setIdFilter] = useState(idParam ?? '');
     const [evaluatorFilter, setEvaluatorFilter] = useState('');
     const [evaluatorIdFilter, setEvaluatorIdFilter] = useState(evaluatorIdParam ?? '');
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
-    const [sortBy, setSortBy] = useState('');
-    const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+    const [sortBy, setSortBy] = useState(initialSortBy);
+    const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>(initialSortDirection);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(25);
     const navigate = useNavigate();
@@ -80,6 +82,9 @@ const ReviewsTable = () => {
         const isAsc = sortBy === field && sortDirection === 'asc';
         setSortBy(field);
         setSortDirection(isAsc ? 'desc' : 'asc');
+        searchParams.set('sortBy', field);
+        searchParams.set('sortDirection', isAsc ? 'desc' : 'asc');
+        setSearchParams(searchParams);
     };
 
     const handleChangePage = (_: unknown, newPage: number) => {

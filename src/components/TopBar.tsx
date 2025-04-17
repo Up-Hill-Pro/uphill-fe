@@ -1,5 +1,7 @@
 import { Box, Typography } from '@mui/material';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { mockWeeks } from '../../public/mockWeeks';
+import { mockApplicants } from '../../public/mockApplicants';
 
 const pathToTitle: Record<string, string> = {
   '/dashboard': 'דשבורד',
@@ -12,7 +14,20 @@ const pathToTitle: Record<string, string> = {
 
 const TopBar = () => {
   const location = useLocation();
-  const title = pathToTitle[location.pathname] || '';
+  const [searchParams] = useSearchParams();
+  const weekIdParam = searchParams.get('weekId');
+  const weekId = weekIdParam ? parseInt(weekIdParam) : null;
+  const currentWeek = mockWeeks.find((w) => w.weekId === weekId);
+  const applicantId = searchParams.get('id');
+  const currentApplicant = mockApplicants.find((a) => a.id === applicantId);
+
+  let title = pathToTitle[location.pathname] || '';
+  if (location.pathname === '/applicants' && currentWeek) {
+    title += ` - צוות ${currentWeek.team}`;
+  }
+  if (location.pathname === '/reviews' && currentWeek && currentApplicant) {
+    title += ` - צוות ${currentWeek.team} - ${currentApplicant.name}`;
+  }
 
   return (
     <Box
