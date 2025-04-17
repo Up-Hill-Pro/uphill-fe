@@ -8,7 +8,6 @@ import {
   MenuItem,
 } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import dayjs, { Dayjs } from 'dayjs';
 
 interface NewWeekFormProps {
   onSubmit: (data: {
@@ -31,7 +30,7 @@ const NewWeekForm: React.FC<NewWeekFormProps> = ({ onSubmit }) => {
   const [team, setTeam] = useState('');
   const [evaluatorCount, setEvaluatorCount] = useState('');
   const [cycle, setCycle] = useState('');
-  const [startDate, setStartDate] = useState<Dayjs | null>(dayjs());
+  const [startDate, setStartDate] = useState<Date | null>(null);
 
   const handleSubmit = () => {
     if (startDate) {
@@ -56,7 +55,7 @@ const NewWeekForm: React.FC<NewWeekFormProps> = ({ onSubmit }) => {
       setTeam('');
       setEvaluatorCount('');
       setCycle('');
-      setStartDate(dayjs());
+      setStartDate(new Date());
     }
   };
 
@@ -111,11 +110,7 @@ const NewWeekForm: React.FC<NewWeekFormProps> = ({ onSubmit }) => {
       <DatePicker
         label="תאריך התחלה"
         value={startDate}
-        onChange={(newDate) => {
-          if (dayjs.isDayjs(newDate)) {
-            setStartDate(newDate);
-          }
-        }}
+        onChange={(newDate) => setStartDate(newDate)}
         slotProps={{
           textField: {
             InputProps: {

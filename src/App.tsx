@@ -6,12 +6,11 @@ import ApplicantsTable from './components/ApplicantsTable';
 import InstructorsTable from "./components/InstructorsTable.tsx";
 import ReviewsTable from "./components/ReviewsTable.tsx";
 import WeeksTable from "./components/WeeksTable.tsx";
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+//import { LocalizationProvider } from '@mui/x-date-pickers';
+//import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 function App() {
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Box sx={{ display: 'flex', flexDirection: 'row-reverse' }}>
         <SideNav />
         <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
@@ -24,7 +23,6 @@ function App() {
           </Routes>
         </Box>
       </Box>
-    </LocalizationProvider>
   );
 }
 
