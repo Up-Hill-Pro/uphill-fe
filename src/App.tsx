@@ -4,6 +4,7 @@ import SideNav from './components/SideNav'
 import TopBar from './components/TopBar';
 import ApplicantsTable from './components/ApplicantsTable';
 import InstructorsTable from "./components/InstructorsTable.tsx";
+import ReviewsTable from "./components/ReviewsTable.tsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/applicants" element={<ApplicantsTable />} />
           <Route path="/instructors" element={<InstructorsTable />} />
+          <Route path="/reviews" element={<ReviewsTable />} />
         </Routes>
       </Box>
     </Box>

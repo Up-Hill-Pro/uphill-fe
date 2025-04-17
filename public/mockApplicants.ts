@@ -27,7 +27,7 @@ export const mockApplicants: Applicant[] = [
         rank: 2,
         status: 'עבר',
         score: 4.6,
-        notes: '',
+        notes: 'מועמד מוביל לקצונה בצוות',
         unit: 'אגוז',
     },
     {

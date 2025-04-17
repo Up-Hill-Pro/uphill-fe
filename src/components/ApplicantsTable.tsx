@@ -29,7 +29,7 @@ const ApplicantsTable = () => {
     const [sortBy, setSortBy] = useState('');
     const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
     const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [rowsPerPage, setRowsPerPage] = useState(25);
 
     const filteredApplicants = mockApplicants.filter((applicant) => {
         return (
@@ -105,50 +105,34 @@ const ApplicantsTable = () => {
                     <MenuItem value="דובדבן">דובדבן</MenuItem>
                 </TextField>
             </Box>
-            <TableContainer component={Paper} sx={{ maxHeight: 'calc(100vh - 200px)' }}>
+            <TableContainer component={Paper} sx={{ maxHeight: 'calc(100vh - 250px)' }}>
                 <Table stickyHeader>
-                    <TableHead sx={{ backgroundColor: '#f5f5f5' }}>
+                    <TableHead>
                         <TableRow>
-                            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-                                <TableSortLabel
-                                    active={sortBy === 'name'}
-                                    direction={sortBy === 'name' ? sortDirection : 'asc'}
-                                    onClick={() => handleSort('name')}
-                                >
-                                    שם החניך
-                                </TableSortLabel>
-                            </TableCell>
-                            <TableCell align="center" sx={{ fontWeight: 'bold' }}>מספר אישי</TableCell>
-                            <TableCell align="center" sx={{ fontWeight: 'bold' }}>יחידה</TableCell>
-                            <TableCell align="center" sx={{ fontWeight: 'bold' }}>תמונה</TableCell>
-                            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-                                <TableSortLabel
-                                    active={sortBy === 'rank'}
-                                    direction={sortBy === 'rank' ? sortDirection : 'asc'}
-                                    onClick={() => handleSort('rank')}
-                                >
-                                    דירוג בקבוצה
-                                </TableSortLabel>
-                            </TableCell>
-                            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-                                <TableSortLabel
-                                    active={sortBy === 'status'}
-                                    direction={sortBy === 'status' ? sortDirection : 'asc'}
-                                    onClick={() => handleSort('status')}
-                                >
-                                    סטטוס
-                                </TableSortLabel>
-                            </TableCell>
-                            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-                                <TableSortLabel
-                                    active={sortBy === 'score'}
-                                    direction={sortBy === 'score' ? sortDirection : 'asc'}
-                                    onClick={() => handleSort('score')}
-                                >
-                                    ציון סופי
-                                </TableSortLabel>
-                            </TableCell>
-                            <TableCell align="center" sx={{ fontWeight: 'bold' }}>הערות</TableCell>
+                            {[
+                                { id: 'name', label: 'שם החניך' },
+                                { id: 'id', label: 'מספר אישי' },
+                                { id: 'image', label: 'תמונה' },
+                                { id: 'unit', label: 'יחידה' },
+                                { id: 'rank', label: 'דירוג בקבוצה' },
+                                { id: 'status', label: 'סטטוס' },
+                                { id: 'score', label: 'ציון סופי' },
+                                { id: 'notes', label: 'הערות' },
+                            ].map((column) => (
+                                <TableCell key={column.id} align="center" sx={{ fontWeight: 'bold' }}>
+                                    {['image', 'notes'].includes(column.id) ? (
+                                        column.label
+                                    ) : (
+                                        <TableSortLabel
+                                            active={sortBy === column.id}
+                                            direction={sortBy === column.id ? sortDirection : 'asc'}
+                                            onClick={() => handleSort(column.id)}
+                                        >
+                                            {column.label}
+                                        </TableSortLabel>
+                                    )}
+                                </TableCell>
+                            ))}
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -200,7 +184,7 @@ const ApplicantsTable = () => {
                     },
                 }}
                 labelRowsPerPage="מספר פריטים בעמוד:"
-                rowsPerPageOptions={[10, 25, 50]}
+                rowsPerPageOptions={[25, 50]}
                 component="div"
                 count={sortedApplicants.length}
                 rowsPerPage={rowsPerPage}
