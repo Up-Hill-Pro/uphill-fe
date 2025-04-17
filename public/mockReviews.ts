@@ -13,6 +13,7 @@ export type Review = {
     evaluatorId: string;
     date: string;
     path: string;
+    weekId: number;
 };
 
 export const mockReviews: Review[] = [
@@ -30,7 +31,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "נדב שגב",
         "evaluatorId": "929884",
         "date": "31-01-2024 19:46",
-        "path": "אביה 1"
+        "path": "אביה 1",
+        "weekId": 1,
     },
     {
         "name": "אורי לוי",
@@ -46,7 +48,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "גיא בן עמי",
         "evaluatorId": "148455",
         "date": "29-06-2024 21:12",
-        "path": "אביה 1"
+        "path": "אביה 1",
+        "weekId": 1,
     },
     {
         "name": "אורי לוי",
@@ -62,7 +65,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "יהב ברק",
         "evaluatorId": "745832",
         "date": "11-12-2024 22:09",
-        "path": "אביה 1"
+        "path": "אביה 1",
+        "weekId": 1,
     },
     {
         "name": "יואב כהן",
@@ -78,7 +82,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "אור רוזן",
         "evaluatorId": "689945",
         "date": "11-04-2024 16:55",
-        "path": "נקרות"
+        "path": "נקרות",
+        "weekId": 1,
     },
     {
         "name": "יואב כהן",
@@ -94,7 +99,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "מאור ישראלי",
         "evaluatorId": "872700",
         "date": "18-04-2024 05:04",
-        "path": "חצרה 1"
+        "path": "חצרה 1",
+        "weekId": 1,
     },
     {
         "name": "יואב כהן",
@@ -110,7 +116,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "גיא בן עמי",
         "evaluatorId": "148455",
         "date": "24-06-2024 05:04",
-        "path": "קרני חיטים 1"
+        "path": "קרני חיטים 1",
+        "weekId": 1,
     },
     {
         "name": "איתן ישראלי",
@@ -126,7 +133,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "טל מרציאנו",
         "evaluatorId": "772596",
         "date": "07-12-2024 16:19",
-        "path": "הקפה רמות מנשה"
+        "path": "הקפה רמות מנשה",
+        "weekId": 1,
     },
     {
         "name": "איתן ישראלי",
@@ -142,7 +150,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "עידן לוי",
         "evaluatorId": "395346",
         "date": "15-12-2024 23:11",
-        "path": "חצרה 1"
+        "path": "חצרה 1",
+        "weekId": 1,
     },
     {
         "name": "איתן ישראלי",
@@ -158,7 +167,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "יהב ברק",
         "evaluatorId": "745832",
         "date": "26-09-2024 10:35",
-        "path": "הקפה רמות מנשה"
+        "path": "הקפה רמות מנשה",
+        "weekId": 1,
     },
     {
         "name": "רועי פז",
@@ -174,7 +184,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "תומר ברק",
         "evaluatorId": "204094",
         "date": "21-03-2024 12:05",
-        "path": "חצרה 2"
+        "path": "חצרה 2",
+        "weekId": 1,
     },
     {
         "name": "רועי פז",
@@ -190,7 +201,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "אבירם רוזן",
         "evaluatorId": "578679",
         "date": "13-03-2024 00:02",
-        "path": "חצרה 1"
+        "path": "חצרה 1",
+        "weekId": 1,
     },
     {
         "name": "רועי פז",
@@ -206,7 +218,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "נדב שגב",
         "evaluatorId": "929884",
         "date": "04-06-2024 01:36",
-        "path": "רמות מנשה 2"
+        "path": "רמות מנשה 2",
+        "weekId": 1,
     },
     {
         "name": "רן אדרי",
@@ -222,7 +235,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "יהב ברק",
         "evaluatorId": "745832",
         "date": "03-01-2024 11:50",
-        "path": "קרני חיטים 1"
+        "path": "קרני חיטים 1",
+        "weekId": 1,
     },
     {
         "name": "רן אדרי",
@@ -238,7 +252,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "אור רוזן",
         "evaluatorId": "689945",
         "date": "20-10-2024 16:48",
-        "path": "אביה 1"
+        "path": "אביה 1",
+        "weekId": 1,
     },
     {
         "name": "רן אדרי",
@@ -254,7 +269,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "גיא בן עמי",
         "evaluatorId": "148455",
         "date": "25-03-2024 11:37",
-        "path": "חצרה 2"
+        "path": "חצרה 2",
+        "weekId": 1,
     },
     {
         "name": "דניאל פרידמן",
@@ -270,7 +286,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "אבירם רוזן",
         "evaluatorId": "578679",
         "date": "31-05-2024 05:58",
-        "path": "חצרה 1"
+        "path": "חצרה 1",
+        "weekId": 1,
     },
     {
         "name": "דניאל פרידמן",
@@ -286,7 +303,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "תומר ברק",
         "evaluatorId": "204094",
         "date": "05-12-2024 10:55",
-        "path": "הקפה רמות מנשה"
+        "path": "הקפה רמות מנשה",
+        "weekId": 1,
     },
     {
         "name": "דניאל פרידמן",
@@ -302,7 +320,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "אילון שגב",
         "evaluatorId": "697792",
         "date": "23-10-2024 18:10",
-        "path": "נקרות"
+        "path": "נקרות",
+        "weekId": 1,
     },
     {
         "name": "רועי ברקוביץ",
@@ -318,7 +337,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "אילון שגב",
         "evaluatorId": "697792",
         "date": "25-01-2024 02:46",
-        "path": "רמות מנשה 1"
+        "path": "רמות מנשה 1",
+        "weekId": 1,
     },
     {
         "name": "רועי ברקוביץ",
@@ -334,7 +354,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "אור רוזן",
         "evaluatorId": "689945",
         "date": "31-08-2024 02:12",
-        "path": "רמות מנשה 1"
+        "path": "רמות מנשה 1",
+        "weekId": 1,
     },
     {
         "name": "רועי ברקוביץ",
@@ -350,7 +371,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "אסף רוטמן",
         "evaluatorId": "340208",
         "date": "01-11-2024 10:28",
-        "path": "חצרה 1"
+        "path": "חצרה 1",
+        "weekId": 1,
     },
     {
         "name": "עידו רוזנברג",
@@ -366,7 +388,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "עידן לוי",
         "evaluatorId": "395346",
         "date": "25-04-2024 11:21",
-        "path": "חצרה 2"
+        "path": "חצרה 2",
+        "weekId": 1,
     },
     {
         "name": "עידו רוזנברג",
@@ -382,7 +405,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "אילון שגב",
         "evaluatorId": "697792",
         "date": "03-07-2024 04:12",
-        "path": "נקרות"
+        "path": "נקרות",
+        "weekId": 1,
     },
     {
         "name": "עידו רוזנברג",
@@ -398,7 +422,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "אבירם רוזן",
         "evaluatorId": "578679",
         "date": "06-04-2024 21:34",
-        "path": "אביה 1"
+        "path": "אביה 1",
+        "weekId": 1,
     },
     {
         "name": "אורי כהן",
@@ -414,7 +439,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "יהב ברק",
         "evaluatorId": "745832",
         "date": "15-09-2024 22:34",
-        "path": "חצרה 2"
+        "path": "חצרה 2",
+        "weekId": 1,
     },
     {
         "name": "אורי כהן",
@@ -430,7 +456,8 @@ export const mockReviews: Review[] = [
         "evaluatorName": "אבירם רוזן",
         "evaluatorId": "578679",
         "date": "03-07-2024 23:04",
-        "path": "רמות מנשה 1"
+        "path": "רמות מנשה 1",
+        "weekId": 1,
     },
     {
         "name": "אורי כהן",
@@ -446,6 +473,7 @@ export const mockReviews: Review[] = [
         "evaluatorName": "תומר ברק",
         "evaluatorId": "204094",
         "date": "11-06-2024 13:58",
-        "path": "אביה 1"
+        "path": "אביה 1",
+        "weekId": 1,
     }
 ];

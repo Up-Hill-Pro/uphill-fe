@@ -17,10 +17,14 @@ import {
 import { mockApplicants } from '../../public/mockApplicants';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 //import { useTheme } from '@mui/material/styles';
 
 const getStatusColor = (status: string) => {
-    return status === 'עבר' ? 'success' : 'error';
+    if (status === 'עבר') return 'success';
+    if (status === 'לא עבר') return 'error';
+    if (status === 'דרושה החלטה') return 'warning';
+    return 'default';
 };
 
 const ApplicantsTable = () => {
@@ -32,9 +36,14 @@ const ApplicantsTable = () => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(25);
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const weekIdParam = searchParams.get('weekId');
+    const weekId = weekIdParam ? parseInt(weekIdParam) : null;
 
     const filteredApplicants = mockApplicants.filter((applicant) => {
+        const matchesWeek = weekId === null || applicant.weekId === weekId;
         return (
+            matchesWeek &&
             applicant.name.includes(nameFilter) &&
             applicant.id.includes(idFilter) &&
             (unitFilter === '' || applicant.unit === unitFilter)

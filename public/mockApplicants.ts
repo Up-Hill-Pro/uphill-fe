@@ -7,6 +7,7 @@ export type Applicant = {
     score: number;
     notes: string;
     unit: 'סיירת צנחנים' | 'אגוז' | 'מגלן' | 'דובדבן';
+    weekId: number;
 };
 
 export const mockApplicants: Applicant[] = [
@@ -19,6 +20,7 @@ export const mockApplicants: Applicant[] = [
         score: 4.8,
         notes: 'מצטיין צוות',
         unit: 'סיירת צנחנים',
+        weekId: 1,
     },
     {
         name: 'יואב כהן',
@@ -28,17 +30,19 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.6,
         notes: 'מועמד מוביל לקצונה בצוות',
-        unit: 'אגוז',
+        unit: 'סיירת צנחנים',
+        weekId: 1,
     },
     {
         name: 'איתן ישראלי',
         id: '842398',
         image: '',
         rank: 3,
-        status: 'לא עבר',
+        status: 'דרושה החלטה',
         score: 3.1,
         notes: 'קושי בעבודת צוות',
-        unit: 'מגלן',
+        unit: 'סיירת צנחנים',
+        weekId: 1,
     },
     {
         name: 'רועי פז',
@@ -48,7 +52,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.0,
         notes: 'פוטנציאל גבוה',
-        unit: 'דובדבן',
+        unit: 'סיירת צנחנים',
+        weekId: 1,
     },
     {
         name: 'רן אדרי',
@@ -58,17 +63,19 @@ export const mockApplicants: Applicant[] = [
         status: 'לא עבר',
         score: 2.9,
         notes: 'בעיות משמעת',
-        unit: 'אגוז',
+        unit: 'סיירת צנחנים',
+        weekId: 1,
     },
     {
         name: 'דניאל פרידמן',
         id: '123456',
         image: '',
         rank: 6,
-        status: 'עבר',
+        status: 'דרושה החלטה',
         score: 3.5,
         notes: '',
         unit: 'סיירת צנחנים',
+        weekId: 1,
     },
     {
         name: 'רועי ברקוביץ',
@@ -78,7 +85,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.1,
         notes: 'מועמד מצטיין',
-        unit: 'מגלן',
+        unit: 'סיירת צנחנים',
+        weekId: 1,
     },
     {
         name: 'עידו רוזנברג',
@@ -88,7 +96,8 @@ export const mockApplicants: Applicant[] = [
         status: 'לא עבר',
         score: 2.3,
         notes: 'דרוש שיפור',
-        unit: 'אגוז',
+        unit: 'סיירת צנחנים',
+        weekId: 1,
     },
     {
         name: 'אורי כהן',
@@ -98,17 +107,19 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.7,
         notes: '',
-        unit: 'דובדבן',
+        unit: 'סיירת צנחנים',
+        weekId: 1,
     },
     {
         name: 'טליה לוי',
         id: '567890',
         image: '',
         rank: 10,
-        status: 'עבר',
+        status: 'דרושה החלטה',
         score: 3.9,
         notes: 'מועמד מבטיח',
-        unit: 'מגלן',
+        unit: 'סיירת צנחנים',
+        weekId: 1,
     },
     {
         name: 'עומרי שמואלי',
@@ -118,7 +129,8 @@ export const mockApplicants: Applicant[] = [
         status: 'לא עבר',
         score: 2.8,
         notes: 'לא עמד בציפיות',
-        unit: 'אגוז',
+        unit: 'סיירת צנחנים',
+        weekId: 1,
     },
     {
         name: 'תמר פרץ',
@@ -129,6 +141,7 @@ export const mockApplicants: Applicant[] = [
         score: 4.2,
         notes: 'התקדמות מרשימה',
         unit: 'סיירת צנחנים',
+        weekId: 1,
     },
     {
         name: 'יונתן אברהם',
@@ -138,7 +151,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 3.6,
         notes: '',
-        unit: 'דובדבן',
+        unit: 'סיירת צנחנים',
+        weekId: 2,
     },
     {
         name: 'שקד גולדשטיין',
@@ -148,7 +162,8 @@ export const mockApplicants: Applicant[] = [
         status: 'לא עבר',
         score: 2.4,
         notes: 'דרוש שיפור',
-        unit: 'מגלן',
+        unit: 'סיירת צנחנים',
+        weekId: 2,
     },
     {
         name: 'אדווה מימון',
@@ -158,7 +173,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.3,
         notes: '',
-        unit: 'אגוז',
+        unit: 'סיירת צנחנים',
+        weekId: 2,
     },
     {
         name: 'רועי ברזילי',
@@ -169,6 +185,7 @@ export const mockApplicants: Applicant[] = [
         score: 3.8,
         notes: '',
         unit: 'סיירת צנחנים',
+        weekId: 2,
     },
     {
         name: 'עומרי דניאל',
@@ -178,7 +195,8 @@ export const mockApplicants: Applicant[] = [
         status: 'לא עבר',
         score: 2.7,
         notes: '',
-        unit: 'דובדבן',
+        unit: 'סיירת צנחנים',
+        weekId: 2,
     },
     {
         name: 'עידן טל',
@@ -188,7 +206,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.5,
         notes: 'מועמד מצטיין',
-        unit: 'מגלן',
+        unit: 'סיירת צנחנים',
+        weekId: 2,
     },
     {
         name: 'ליאב שחר',
@@ -198,7 +217,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 3.4,
         notes: '',
-        unit: 'אגוז',
+        unit: 'סיירת צנחנים',
+        weekId: 2,
     },
     {
         name: 'אורי נמרוד',
@@ -208,7 +228,8 @@ export const mockApplicants: Applicant[] = [
         status: 'לא עבר',
         score: 2.6,
         notes: 'דרוש שיפור',
-        unit: 'דובדבן',
+        unit: 'סיירת צנחנים',
+        weekId: 2,
     },
     {
         name: 'טל כהן',
@@ -218,7 +239,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.0,
         notes: '',
-        unit: 'סיירת צנחנים',
+        unit: 'אגוז',
+        weekId: 8,
     },
     {
         name: 'רועי מזרחי',
@@ -228,7 +250,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 3.7,
         notes: '',
-        unit: 'מגלן',
+        unit: 'אגוז',
+        weekId: 8,
     },
     {
         name: 'יוסי לוי',
@@ -239,6 +262,7 @@ export const mockApplicants: Applicant[] = [
         score: 2.5,
         notes: 'קושי בעבודת צוות',
         unit: 'אגוז',
+        weekId: 8,
     },
     {
         name: 'רון אוחיון',
@@ -248,7 +272,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.1,
         notes: '',
-        unit: 'דובדבן',
+        unit: 'אגוז',
+        weekId: 8,
     },
     {
         name: 'עידו רפאלי',
@@ -258,7 +283,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 3.3,
         notes: '',
-        unit: 'סיירת צנחנים',
+        unit: 'אגוז',
+        weekId: 8,
     },
     {
         name: 'תובל רוזן',
@@ -268,7 +294,8 @@ export const mockApplicants: Applicant[] = [
         status: 'לא עבר',
         score: 2.2,
         notes: 'דרוש שיפור',
-        unit: 'מגלן',
+        unit: 'אגוז',
+        weekId: 8,
     },
     {
         name: 'אפרת ברק',
@@ -279,6 +306,7 @@ export const mockApplicants: Applicant[] = [
         score: 4.6,
         notes: '',
         unit: 'אגוז',
+        weekId: 8,
     },
     {
         name: 'רוני סלע',
@@ -288,7 +316,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 3.2,
         notes: '',
-        unit: 'דובדבן',
+        unit: 'אגוז',
+        weekId: 8,
     },
     {
         name: 'דניאל חזן',
@@ -298,7 +327,8 @@ export const mockApplicants: Applicant[] = [
         status: 'לא עבר',
         score: 2.1,
         notes: 'בעיות משמעת',
-        unit: 'סיירת צנחנים',
+        unit: 'אגוז',
+        weekId: 8,
     },
     {
         name: 'שקד רוזנבלום',
@@ -308,7 +338,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.4,
         notes: '',
-        unit: 'מגלן',
+        unit: 'דובדבן',
+        weekId: 8,
     },
     {
         name: 'אורי בן דוד',
@@ -318,7 +349,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 3.0,
         notes: '',
-        unit: 'אגוז',
+        unit: 'דובדבן',
+        weekId: 0,
     },
     {
         name: 'רם אברהם',
@@ -329,6 +361,7 @@ export const mockApplicants: Applicant[] = [
         score: 2.8,
         notes: 'לא עמד בציפיות',
         unit: 'דובדבן',
+        weekId: 0,
     },
     {
         name: 'יובל לוי',
@@ -338,7 +371,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.2,
         notes: '',
-        unit: 'סיירת צנחנים',
+        unit: 'דובדבן',
+        weekId: 0,
     },
     {
         name: 'עומרי חודורוב',
@@ -348,7 +382,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 3.9,
         notes: '',
-        unit: 'מגלן',
+        unit: 'דובדבן',
+        weekId: 0,
     },
     {
         name: 'איתן רוזנברג',
@@ -358,7 +393,8 @@ export const mockApplicants: Applicant[] = [
         status: 'לא עבר',
         score: 2.6,
         notes: 'דרוש שיפור',
-        unit: 'אגוז',
+        unit: 'דובדבן',
+        weekId: 0,
     },
     {
         name: 'עומרי גיל',
@@ -369,6 +405,7 @@ export const mockApplicants: Applicant[] = [
         score: 4.3,
         notes: 'מועמד מצטיין',
         unit: 'דובדבן',
+        weekId: 8,
     },
     {
         name: 'ניר סופר',
@@ -378,7 +415,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 3.8,
         notes: '',
-        unit: 'סיירת צנחנים',
+        unit: 'דובדבן',
+        weekId: 0,
     },
     {
         name: 'עדי אדרי',
@@ -388,7 +426,8 @@ export const mockApplicants: Applicant[] = [
         status: 'לא עבר',
         score: 2.7,
         notes: 'לא עמד בציפיות',
-        unit: 'מגלן',
+        unit: 'דובדבן',
+        weekId: 0,
     },
     {
         name: 'אביאל פז',
@@ -398,7 +437,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.5,
         notes: '',
-        unit: 'אגוז',
+        unit: 'דובדבן',
+        weekId: 0,
     },
     {
         name: 'שני ניב',
@@ -409,6 +449,7 @@ export const mockApplicants: Applicant[] = [
         score: 3.4,
         notes: '',
         unit: 'דובדבן',
+        weekId: 0,
     },
     {
         name: 'עילי שמעוני',
@@ -418,7 +459,8 @@ export const mockApplicants: Applicant[] = [
         status: 'לא עבר',
         score: 2.5,
         notes: 'דרוש שיפור',
-        unit: 'סיירת צנחנים',
+        unit: 'דובדבן',
+        weekId: 8,
     },
     {
         name: 'יובל יוספי',
@@ -428,7 +470,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.1,
         notes: '',
-        unit: 'מגלן',
+        unit: 'דובדבן',
+        weekId: 8,
     },
     {
         name: 'מאור ברק',
@@ -438,7 +481,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 3.6,
         notes: '',
-        unit: 'אגוז',
+        unit: 'דובדבן',
+        weekId: 0,
     },
     {
         name: 'ניצן זיו',
@@ -449,6 +493,7 @@ export const mockApplicants: Applicant[] = [
         score: 2.4,
         notes: 'לא עמד בציפיות',
         unit: 'דובדבן',
+        weekId: 0,
     },
     {
         name: 'רוני לוי',
@@ -458,7 +503,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.0,
         notes: '',
-        unit: 'סיירת צנחנים',
+        unit: 'דובדבן',
+        weekId: 0,
     },
     {
         name: 'עומרי פישר',
@@ -468,7 +514,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 3.3,
         notes: '',
-        unit: 'מגלן',
+        unit: 'דובדבן',
+        weekId: 0,
     },
     {
         name: 'דביר חן',
@@ -478,7 +525,8 @@ export const mockApplicants: Applicant[] = [
         status: 'לא עבר',
         score: 2.9,
         notes: 'דרוש שיפור',
-        unit: 'אגוז',
+        unit: 'מגלן',
+        weekId: 4,
     },
     {
         name: 'אורי אטיאס',
@@ -488,7 +536,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 4.2,
         notes: '',
-        unit: 'דובדבן',
+        unit: 'מגלן',
+        weekId: 4,
     },
     {
         name: 'שקד פרץ',
@@ -498,7 +547,8 @@ export const mockApplicants: Applicant[] = [
         status: 'עבר',
         score: 3.1,
         notes: '',
-        unit: 'סיירת צנחנים',
+        unit: 'מגלן',
+        weekId: 4,
     },
     {
         name: 'דביר שמואלי',
@@ -509,5 +559,6 @@ export const mockApplicants: Applicant[] = [
         score: 2.2,
         notes: 'בעיות משמעת',
         unit: 'מגלן',
+        weekId: 4,
     },
 ];

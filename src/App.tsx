@@ -5,7 +5,7 @@ import TopBar from './components/TopBar';
 import ApplicantsTable from './components/ApplicantsTable';
 import InstructorsTable from "./components/InstructorsTable.tsx";
 import ReviewsTable from "./components/ReviewsTable.tsx";
-import WeeksTable from "./components/WeeksTable.jsx.tsx";
+import WeeksTable from "./components/WeeksTable.tsx";
 
 function App() {
   return (
