@@ -5,6 +5,7 @@ import TopBar from './components/TopBar';
 import ApplicantsTable from './components/ApplicantsTable';
 import InstructorsTable from "./components/InstructorsTable.tsx";
 import ReviewsTable from "./components/ReviewsTable.tsx";
+import WeeksTable from "./components/WeeksTable.jsx.tsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/applicants" element={<ApplicantsTable />} />
           <Route path="/instructors" element={<InstructorsTable />} />
           <Route path="/reviews" element={<ReviewsTable />} />
+          <Route path="/weeks" element={<WeeksTable />} />
         </Routes>
       </Box>
     </Box>

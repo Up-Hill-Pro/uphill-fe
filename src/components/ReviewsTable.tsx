@@ -13,7 +13,7 @@ import {
     TextField,
 } from '@mui/material';
 import { useState } from 'react';
-import {mockReviews} from '../../public/mockReviews';
+import {mockReviews} from '../../public/mockReviews.ts';
 import { useSearchParams } from 'react-router-dom';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';

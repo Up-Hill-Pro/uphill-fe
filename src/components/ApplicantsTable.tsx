@@ -49,11 +49,14 @@ const ApplicantsTable = () => {
 
     const sortedApplicants = [...filteredApplicants].sort((a, b) => {
         const direction = sortDirection === 'asc' ? 1 : -1;
-        if (sortBy === 'name' || sortBy === 'status') {
+        if (sortBy === 'name' || sortBy === 'status' || sortBy === 'unit') {
             return a[sortBy].localeCompare(b[sortBy]) * direction;
         }
         if (sortBy === 'rank' || sortBy === 'score') {
             return (a[sortBy] - b[sortBy]) * direction;
+        }
+        if (sortBy === 'id') {
+            return a.id.localeCompare(b.id) * direction;
         }
         return 0;
     });
@@ -155,10 +158,10 @@ const ApplicantsTable = () => {
                                     {row.name}
                                 </TableCell>
                                 <TableCell align="center">{row.id}</TableCell>
-                                <TableCell align="center">{row.unit}</TableCell>
                                 <TableCell align="center">
                                     <Avatar alt={row.name} src={row.image} />
                                 </TableCell>
+                                <TableCell align="center">{row.unit}</TableCell>
                                 <TableCell align="center">{row.rank}</TableCell>
                                 <TableCell align="center">
                                     <Chip
