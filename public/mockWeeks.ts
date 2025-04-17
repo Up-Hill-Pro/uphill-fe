@@ -3,7 +3,7 @@ export type Week = {
     weekNumber: number;
     unit: string;
     team: string;
-    applicantCount: number;
+    applicantCount?: number;
     evaluatorCount: number;
     status: string;
     passed: number;
@@ -19,7 +19,7 @@ export const mockWeeks: Week[] = [
         team: "גסטלדו",
         applicantCount: 12,
         evaluatorCount: 5,
-        status: "הסתיים",
+        status: "בתהליך",
         passed: 4,
         cycle: "אוג 2023",
         startDate: "24-01-2024 00:00"
@@ -31,7 +31,7 @@ export const mockWeeks: Week[] = [
         team: "רון",
         applicantCount: 10,
         evaluatorCount: 4,
-        status: "בתהליך",
+        status: "הסתיים",
         passed: 0,
         cycle: "מרץ 2023",
         startDate: "20-02-2024 00:00"

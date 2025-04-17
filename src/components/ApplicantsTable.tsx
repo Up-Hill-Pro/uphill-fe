@@ -66,7 +66,7 @@ const ApplicantsTable = () => {
             return a[sortBy].localeCompare(b[sortBy]) * direction;
         }
         if (sortBy === 'rank' || sortBy === 'score') {
-            return (a[sortBy] - b[sortBy]) * direction;
+            return ((a[sortBy] ?? 0) - (b[sortBy] ?? 0)) * direction;
         }
         if (sortBy === 'id') {
             return a.id.localeCompare(b.id) * direction;

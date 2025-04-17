@@ -12,8 +12,10 @@ import {
     TablePagination,
     TextField,
     MenuItem,
+    Button,
 } from '@mui/material';
-import { useState } from 'react';
+import { Snackbar, Alert } from '@mui/material';
+import { useState, useEffect } from 'react';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -21,6 +23,7 @@ import { he } from 'date-fns/locale';
 import { mockWeeks } from '../../public/mockWeeks';
 import type { Week } from '../../public/mockWeeks';
 import { useNavigate } from 'react-router-dom';
+import NewWeekForm from './NewWeekForm';
 
 const parseDate = (dateStr: string) => {
     const [datePart, timePart] = dateStr.split(' ');
@@ -40,6 +43,10 @@ const getStatusColor = (status: string) => {
 };
 
 const WeeksTable = () => {
+    const [weeks, setWeeks] = useState<Week[]>(() => {
+        const saved = localStorage.getItem('weeks');
+        return saved ? JSON.parse(saved) : mockWeeks;
+    });
     const [sortBy, setSortBy] = useState('');
     const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
     const [page, setPage] = useState(0);
@@ -48,7 +55,13 @@ const WeeksTable = () => {
     const [unitFilter, setUnitFilter] = useState('');
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
+    const [showForm, setShowForm] = useState(false);
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        localStorage.setItem('weeks', JSON.stringify(weeks));
+    }, [weeks]);
 
     const handleSort = (field: keyof Week | string) => {
         const isAsc = sortBy === field && sortDirection === 'asc';
@@ -56,7 +69,7 @@ const WeeksTable = () => {
         setSortDirection(isAsc ? 'desc' : 'asc');
     };
 
-    const sortedWeeks = [...mockWeeks].sort((a, b) => {
+    const sortedWeeks = [...weeks].sort((a, b) => {
         const direction = sortDirection === 'asc' ? 1 : -1;
 
         const aVal = a[sortBy as keyof Week];
@@ -104,72 +117,83 @@ const WeeksTable = () => {
         setPage(0);
     };
 
+    const handleNewWeekSubmit = (newWeek: Week) => {
+        setWeeks((prev) => [...prev, newWeek]);
+        setShowForm(false);
+        setSnackbarOpen(true);
+    };
+
     return (
         <Box sx={{ p: 3, direction: 'rtl' }}>
-            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 2 }}>
-                <TextField
-                    label="חיפוש לפי שבוע חיה״א"
-                    type="number"
-                    value={weekFilter}
-                    onChange={(e) => setWeekFilter(e.target.value)}
-                    variant="outlined"
-                    size="small"
-                />
-                <TextField
-                    label="יחידה"
-                    value={unitFilter}
-                    onChange={(e) => setUnitFilter(e.target.value)}
-                    select
-                    variant="outlined"
-                    size="small"
-                    sx={{ minWidth: 150 }}
-                >
-                    <MenuItem value="">הכל</MenuItem>
-                    <MenuItem value="סיירת צנחנים">סיירת צנחנים</MenuItem>
-                    <MenuItem value="אגוז">אגוז</MenuItem>
-                    <MenuItem value="מגלן">מגלן</MenuItem>
-                    <MenuItem value="דובדבן">דובדבן</MenuItem>
-                </TextField>
-                <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={he}>
-                    <DatePicker
-                        label="מתאריך"
-                        value={startDate}
-                        onChange={(newValue) => setStartDate(newValue)}
-                        slotProps={{
-                            textField: {
-                                size: 'small',
-                                sx: { minWidth: 150 },
-                                InputProps: {
-                                    sx: {
-                                        direction: 'rtl',
-                                        '& .MuiInputAdornment-root': {
-                                            order: -1,
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+                <Box sx={{ display: 'flex', gap: 2 }}>
+                    <TextField
+                        label="חיפוש לפי שבוע חיה״א"
+                        type="number"
+                        value={weekFilter}
+                        onChange={(e) => setWeekFilter(e.target.value)}
+                        variant="outlined"
+                        size="small"
+                    />
+                    <TextField
+                        label="יחידה"
+                        value={unitFilter}
+                        onChange={(e) => setUnitFilter(e.target.value)}
+                        select
+                        variant="outlined"
+                        size="small"
+                        sx={{ minWidth: 150 }}
+                    >
+                        <MenuItem value="">הכל</MenuItem>
+                        <MenuItem value="סיירת צנחנים">סיירת צנחנים</MenuItem>
+                        <MenuItem value="אגוז">אגוז</MenuItem>
+                        <MenuItem value="מגלן">מגלן</MenuItem>
+                        <MenuItem value="דובדבן">דובדבן</MenuItem>
+                    </TextField>
+                    <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={he}>
+                        <DatePicker
+                            label="מתאריך"
+                            value={startDate}
+                            onChange={(newValue) => setStartDate(newValue)}
+                            slotProps={{
+                                textField: {
+                                    size: 'small',
+                                    sx: { minWidth: 150 },
+                                    InputProps: {
+                                        sx: {
+                                            direction: 'rtl',
+                                            '& .MuiInputAdornment-root': {
+                                                order: -1,
+                                            },
                                         },
                                     },
                                 },
-                            },
-                        }}
-                    />
-                    <DatePicker
-                        label="עד תאריך"
-                        value={endDate}
-                        onChange={(newValue) => setEndDate(newValue)}
-                        slotProps={{
-                            textField: {
-                                size: 'small',
-                                sx: { minWidth: 150 },
-                                InputProps: {
-                                    sx: {
-                                        direction: 'rtl',
-                                        '& .MuiInputAdornment-root': {
-                                            order: -1,
+                            }}
+                        />
+                        <DatePicker
+                            label="עד תאריך"
+                            value={endDate}
+                            onChange={(newValue) => setEndDate(newValue)}
+                            slotProps={{
+                                textField: {
+                                    size: 'small',
+                                    sx: { minWidth: 150 },
+                                    InputProps: {
+                                        sx: {
+                                            direction: 'rtl',
+                                            '& .MuiInputAdornment-root': {
+                                                order: -1,
+                                            },
                                         },
                                     },
                                 },
-                            },
-                        }}
-                    />
-                </LocalizationProvider>
+                            }}
+                        />
+                    </LocalizationProvider>
+                </Box>
+                <Button variant="contained" color="primary" onClick={() => setShowForm(true)}>
+                    איתור חדש
+                </Button>
             </Box>
             <TableContainer component={Paper}>
                 <Table stickyHeader>
@@ -247,6 +271,36 @@ const WeeksTable = () => {
                     },
                 }}
             />
+            {showForm && (
+                <Box sx={{ position: 'fixed', top: 0, right: 0, width: '100vw', height: '100vh', bgcolor: 'rgba(0,0,0,0.5)', zIndex: 9999, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <Box sx={{ bgcolor: 'white', p: 3, borderRadius: 2, maxHeight: '90vh', overflowY: 'auto', width: '90vw' }}>
+                        <Button onClick={() => setShowForm(false)} sx={{ position: 'absolute', top: 10, left: 20 }}>❌</Button>
+                        <NewWeekForm onSubmit={handleNewWeekSubmit} />
+                    </Box>
+                </Box>
+            )}
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={2000}
+                onClose={() => setSnackbarOpen(false)}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+                <Alert
+                    onClose={() => setSnackbarOpen(false)}
+                    severity="success"
+                    sx={{
+                        width: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 10,
+                        fontSize: '1.1rem',
+                        px: 2,
+                        py: 1.5
+                    }}
+                >
+                    השבוע נוסף בהצלחה!
+                </Alert>
+            </Snackbar>
         </Box>
     );
 };

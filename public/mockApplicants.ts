@@ -2,10 +2,10 @@ export type Applicant = {
     name: string;
     id: string;
     image: string;
-    rank: number;
+    rank?: number;
     status: string;
-    score: number;
-    notes: string;
+    score?: number;
+    notes?: string;
     unit: 'סיירת צנחנים' | 'אגוז' | 'מגלן' | 'דובדבן';
     weekId: number;
 };
@@ -147,8 +147,8 @@ export const mockApplicants: Applicant[] = [
         name: 'יונתן אברהם',
         id: '890123',
         image: '',
-        rank: 13,
-        status: 'עבר',
+        rank: 4,
+        status: 'לא עבר',
         score: 3.6,
         notes: '',
         unit: 'סיירת צנחנים',
@@ -158,7 +158,7 @@ export const mockApplicants: Applicant[] = [
         name: 'שקד גולדשטיין',
         id: '901234',
         image: '',
-        rank: 14,
+        rank: 8,
         status: 'לא עבר',
         score: 2.4,
         notes: 'דרוש שיפור',
@@ -166,10 +166,10 @@ export const mockApplicants: Applicant[] = [
         weekId: 2,
     },
     {
-        name: 'אדווה מימון',
+        name: 'בן אל מימון',
         id: '012345',
         image: '',
-        rank: 15,
+        rank: 2,
         status: 'עבר',
         score: 4.3,
         notes: '',
@@ -180,8 +180,8 @@ export const mockApplicants: Applicant[] = [
         name: 'רועי ברזילי',
         id: '135790',
         image: '',
-        rank: 16,
-        status: 'עבר',
+        rank: 3,
+        status: 'לא עבר',
         score: 3.8,
         notes: '',
         unit: 'סיירת צנחנים',
@@ -191,7 +191,7 @@ export const mockApplicants: Applicant[] = [
         name: 'עומרי דניאל',
         id: '246801',
         image: '',
-        rank: 17,
+        rank: 6,
         status: 'לא עבר',
         score: 2.7,
         notes: '',
@@ -202,7 +202,7 @@ export const mockApplicants: Applicant[] = [
         name: 'עידן טל',
         id: '357912',
         image: '',
-        rank: 18,
+        rank: 1,
         status: 'עבר',
         score: 4.5,
         notes: 'מועמד מצטיין',
@@ -213,8 +213,8 @@ export const mockApplicants: Applicant[] = [
         name: 'ליאב שחר',
         id: '468023',
         image: '',
-        rank: 19,
-        status: 'עבר',
+        rank: 5,
+        status: 'לא עבר',
         score: 3.4,
         notes: '',
         unit: 'סיירת צנחנים',
@@ -224,7 +224,7 @@ export const mockApplicants: Applicant[] = [
         name: 'אורי נמרוד',
         id: '579134',
         image: '',
-        rank: 20,
+        rank: 7,
         status: 'לא עבר',
         score: 2.6,
         notes: 'דרוש שיפור',
@@ -560,5 +560,13 @@ export const mockApplicants: Applicant[] = [
         notes: 'בעיות משמעת',
         unit: 'מגלן',
         weekId: 4,
+    },
+    {
+        name: 'רותם גפן',
+        id: '579139',
+        image: '',
+        status: 'טרם נבחן',
+        unit: 'מגלן',
+        weekId: 11,
     },
 ];

@@ -12,19 +12,24 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.2.4",
     "@chakra-ui/react": "^3.16.0",
+    "@date-io/dayjs": "^3.2.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.0.2",
     "@mui/material": "^7.0.2",
+    "@mui/system": "^7.0.2",
     "@mui/x-date-pickers": "^8.0.0",
     "date-fns": "^4.1.0",
+    "dayjs": "^1.11.13",
     "framer-motion": "^12.7.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.5.0"
+    "react-router-dom": "^7.5.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
+    "@mui/types": "^7.4.1",
     "@types/date-fns": "^2.5.3",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
