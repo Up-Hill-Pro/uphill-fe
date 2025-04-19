@@ -1,5 +1,5 @@
 import { Box, Drawer, List, ListItem, ListItemIcon, ListItemText, Avatar, Typography, IconButton, Divider } from '@mui/material';
-import { InsertChart, EventNote, Groups, School, Description, Dashboard, Settings } from '@mui/icons-material';
+import { InsertChart, EventNote, Groups, School, Description, Settings } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const navItems = [
@@ -8,7 +8,7 @@ const navItems = [
   { label: 'מאתרים', icon: <Groups />, path: '/instructors' },
   { label: 'חניכים', icon: <School />, path: '/applicants' },
   { label: 'חוות דעת', icon: <Description />, path: '/reviews' },
-  { label: 'דוחות', icon: <Dashboard />, path: '/reports' },
+  //{ label: 'דוחות', icon: <Dashboard />, path: '/reports' },
 ];
 
 

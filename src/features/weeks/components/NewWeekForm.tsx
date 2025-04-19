@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import type { Week } from './types.ts'
-import { fetchWeeks } from './api.ts'
+import type { Week } from '../types.ts'
+import { fetchWeeks } from '../api.ts'
 import {
   Box,
   Button,

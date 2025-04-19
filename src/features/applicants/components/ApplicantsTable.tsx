@@ -17,8 +17,8 @@ import {
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
-import { fetchApplicants } from './api';
-import type { Applicant } from './types';
+import { fetchApplicants } from '../api.ts';
+import type { Applicant } from '../types.ts';
 
 const getStatusColor = (status: string) => {
     if (status === 'עבר') return 'success';

@@ -14,8 +14,8 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import {useEffect, useState} from 'react';
-import { fetchInstructors } from './api';
-import type { Instructor } from './types';
+import { fetchInstructors } from '../api.ts';
+import type { Instructor } from '../types.ts';
 
 const parseDate = (dateStr: string) => {
   const [datePart, timePart] = dateStr.split(' ');

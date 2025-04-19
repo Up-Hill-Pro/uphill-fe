@@ -13,8 +13,8 @@ import {
     TextField,
 } from '@mui/material';
 import { useState, useEffect } from 'react';
-import { fetchReviews } from './api';
-import type { Review } from './types';
+import { fetchReviews } from '../api.ts';
+import type { Review } from '../types.ts';
 import { useSearchParams } from 'react-router-dom';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';

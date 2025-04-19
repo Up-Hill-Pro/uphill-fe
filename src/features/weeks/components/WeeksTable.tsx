@@ -20,10 +20,10 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { he } from 'date-fns/locale';
-import type { Week } from './types';
+import type { Week } from '../types.ts';
 import { useNavigate } from 'react-router-dom';
 import NewWeekForm from './NewWeekForm.tsx';
-import {fetchWeeks} from "./api.ts";
+import {fetchWeeks} from "../api.ts";
 
 const parseDate = (dateStr: string) => {
     const [datePart, timePart] = dateStr.split(' ');
