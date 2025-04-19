@@ -12,31 +12,15 @@ import {
     TablePagination,
     TextField,
 } from '@mui/material';
-import { useState } from 'react';
-import {mockReviews} from '../../public/mockReviews.ts';
+import { useState, useEffect } from 'react';
+import { fetchReviews } from './api';
+import type { Review } from './types';
 import { useSearchParams } from 'react-router-dom';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { he } from 'date-fns/locale';
 import { useNavigate } from 'react-router-dom';
-
-interface Review {
-    name: string;
-    id: string;
-    image: string;
-    terrain: number;
-    technical: number;
-    learning: number;
-    personal: number;
-    finalAssessment: string;
-    notes: string;
-    finalScore: number;
-    evaluatorName: string;
-    evaluatorId: string;
-    date: string;
-    path: string;
-}
 
 const parseDate = (dateStr: string) => {
     const [datePart, timePart] = dateStr.split(' ');
@@ -46,7 +30,7 @@ const parseDate = (dateStr: string) => {
 };
 
 const ReviewsTable = () => {
-    const [reviews] = useState<Review[]>(mockReviews);
+    const [reviews, setReviews] = useState<Review[]>([]);
     const [searchParams, setSearchParams] = useSearchParams();
     const idParam = searchParams.get('id');
     const evaluatorIdParam = searchParams.get('evaluatorId');
@@ -63,6 +47,13 @@ const ReviewsTable = () => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(25);
     const navigate = useNavigate();
+    useEffect(() => {
+      const loadReviews = async () => {
+        const data = await fetchReviews();
+        setReviews(data);
+      };
+      loadReviews();
+    }, []);
     const filteredReviews = reviews.filter((review) => {
         const reviewDate = parseDate(review.date);
         const isWithinRange =

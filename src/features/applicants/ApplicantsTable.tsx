@@ -14,10 +14,11 @@ import {
     TableSortLabel,
     TablePagination,
 } from '@mui/material';
-import { mockApplicants } from '../../public/mockApplicants';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
+import { fetchApplicants } from './api';
+import type { Applicant } from './types';
 
 const getStatusColor = (status: string) => {
     if (status === 'עבר') return 'success';
@@ -37,11 +38,20 @@ const ApplicantsTable = () => {
     const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>(initialSortDirection);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(25);
+    const [applicants, setApplicants] = useState<Applicant[]>([]);
     const navigate = useNavigate();
     const weekIdParam = searchParams.get('weekId');
     const weekId = weekIdParam ? parseInt(weekIdParam) : null;
 
-    const filteredApplicants = mockApplicants.filter((applicant) => {
+    useEffect(() => {
+      const loadApplicants = async () => {
+        const data = await fetchApplicants();
+        setApplicants(data);
+      };
+      loadApplicants();
+    }, []);
+
+    const filteredApplicants = applicants.filter((applicant) => {
         const matchesWeek = weekId === null || applicant.weekId === weekId;
         return (
             matchesWeek &&
@@ -158,7 +168,7 @@ const ApplicantsTable = () => {
                             <TableRow
                                 key={index}
                                 hover
-                            onClick={() => navigate(`/reviews?id=${row.id}&weekId=${weekId}`)}
+                                onClick={() => navigate(`/reviews?id=${row.id}&weekId=${weekId}`)}
                                 sx={{
                                     cursor: 'pointer',
                                     transition: 'background-color 0.2s',

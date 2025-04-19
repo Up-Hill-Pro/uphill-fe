@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { mockWeeks } from '../../public/mockWeeks';
+import React, { useState, useEffect } from 'react';
+import type { Week } from './types.ts'
+import { fetchWeeks } from './api.ts'
 import {
   Box,
   Button,
@@ -31,10 +32,19 @@ const NewWeekForm: React.FC<NewWeekFormProps> = ({ onSubmit }) => {
   const [evaluatorCount, setEvaluatorCount] = useState('');
   const [cycle, setCycle] = useState('');
   const [startDate, setStartDate] = useState<Date | null>(null);
+  const [weeks, setWeeks] = useState<Week[]>([]);
+
+  useEffect(() => {
+    const loadWeeks = async () => {
+      const data = await fetchWeeks();
+      setWeeks(data);
+    };
+    loadWeeks();
+  }, []);
 
   const handleSubmit = () => {
     if (startDate) {
-      const maxId = Math.max(...mockWeeks.map(w => w.weekId));
+      const maxId = Math.max(...weeks.map(w => w.weekId));
       const newWeek = {
         weekId: maxId + 1,
         weekNumber: parseInt(weekNumber, 10),
@@ -47,7 +57,7 @@ const NewWeekForm: React.FC<NewWeekFormProps> = ({ onSubmit }) => {
         applicantCount: 0,
         passed: 0
       };
-      mockWeeks.push(newWeek);
+      setWeeks([...weeks, newWeek]);
       console.log('שבוע חדש נשלח:', newWeek);
       onSubmit(newWeek);
       setWeekNumber('');

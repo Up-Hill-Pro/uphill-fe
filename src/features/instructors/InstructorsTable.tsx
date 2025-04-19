@@ -13,21 +13,9 @@ import {
     TablePagination
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { mockInstructors } from '../../public/mockInstructors.ts';
-
-type Instructor = {
-  name: string;
-  id: string;
-  image: string;
-  evaluatorNumber: number;
-  evaluatedCount: number;
-  detectedCount: number;
-  detectedAndPassedCount: number;
-  basicSeriesPassRate: string;
-  averageScorePerCandidate: number;
-  lastEvaluationDate: string;
-};
+import {useEffect, useState} from 'react';
+import { fetchInstructors } from './api';
+import type { Instructor } from './types';
 
 const parseDate = (dateStr: string) => {
   const [datePart, timePart] = dateStr.split(' ');
@@ -43,9 +31,19 @@ const InstructorsTable = () => {
     const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(25);
+    const [instructors, setInstructors] = useState<Instructor[]>([]);
+
+    useEffect(() => {
+      const loadInstructors = async () => {
+        const data = await fetchInstructors();
+        setInstructors(data);
+      };
+      loadInstructors();
+    }, []);
+
     const navigate = useNavigate();
 
-    const filteredInstructors: Instructor[] = mockInstructors.filter((instructor) => {
+    const filteredInstructors = instructors.filter((instructor) => {
         return (
             instructor.name.includes(nameFilter) &&
             instructor.id.includes(idFilter)
@@ -226,7 +224,7 @@ const InstructorsTable = () => {
                 <TablePagination
                     dir="rtl"
                     labelRowsPerPage="מספר פריטים בעמוד:"
-                    rowsPerPageOptions={[25, 50]}
+                    rowsPerPageOptions={[25, 50, 100]}
                     component="div"
                     count={sortedInstructors.length}
                     rowsPerPage={rowsPerPage}

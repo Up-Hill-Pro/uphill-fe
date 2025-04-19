@@ -1,11 +1,11 @@
 import { Box } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
-import SideNav from './components/SideNav'
-import TopBar from './components/TopBar';
-import ApplicantsTable from './components/ApplicantsTable';
-import InstructorsTable from "./components/InstructorsTable.tsx";
-import ReviewsTable from "./components/ReviewsTable.tsx";
-import WeeksTable from "./components/WeeksTable.tsx";
+import SideNav from './shared/components/SideNav.tsx'
+import TopBar from './shared/components/TopBar.tsx';
+import ApplicantsTable from './features/applicants/ApplicantsTable.tsx';
+import InstructorsTable from "./features/instructors/InstructorsTable.tsx";
+import ReviewsTable from "./features/reviews/ReviewsTable.tsx";
+import WeeksTable from "./features/weeks/WeeksTable.tsx";
 //import { LocalizationProvider } from '@mui/x-date-pickers';
 //import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 

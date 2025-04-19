@@ -20,10 +20,10 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { he } from 'date-fns/locale';
-import { mockWeeks } from '../../public/mockWeeks';
-import type { Week } from '../../public/mockWeeks';
+import type { Week } from './types';
 import { useNavigate } from 'react-router-dom';
-import NewWeekForm from './NewWeekForm';
+import NewWeekForm from './NewWeekForm.tsx';
+import {fetchWeeks} from "./api.ts";
 
 const parseDate = (dateStr: string) => {
     const [datePart, timePart] = dateStr.split(' ');
@@ -43,10 +43,7 @@ const getStatusColor = (status: string) => {
 };
 
 const WeeksTable = () => {
-    const [weeks, setWeeks] = useState<Week[]>(() => {
-        const saved = localStorage.getItem('weeks');
-        return saved ? JSON.parse(saved) : mockWeeks;
-    });
+    const [weeks, setWeeks] = useState<Week[]>([]);
     const [sortBy, setSortBy] = useState('');
     const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
     const [page, setPage] = useState(0);
@@ -60,8 +57,13 @@ const WeeksTable = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        localStorage.setItem('weeks', JSON.stringify(weeks));
-    }, [weeks]);
+      const loadWeeks = async () => {
+        const data = await fetchWeeks();
+        setWeeks(data);
+      };
+      loadWeeks();
+    }, []);
+
 
     const handleSort = (field: keyof Week | string) => {
         const isAsc = sortBy === field && sortDirection === 'asc';
